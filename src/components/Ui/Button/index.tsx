@@ -1,6 +1,4 @@
 import type { ReactNode ,ButtonHTMLAttributes} from "react";
-import "./index.css";
-
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;

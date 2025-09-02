@@ -44,8 +44,22 @@ const Login = () => {
         toast.success("You will navigate to the home page after 2 seconds.", {
           position: "bottom-center",
           duration: 1500,
+          icon: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-10 w-10"
+              viewBox="0 0 20 20"
+              fill="white" // change color here
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-7l3-3-1-1-2 2-1-1-1 1 2 2z"
+                clipRule="evenodd"
+              />
+            </svg>
+          ),
           style: {
-            backgroundColor: "black",
+            backgroundColor: "#CF0018",
             color: "white",
             width: "fit-content",
           },

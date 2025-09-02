@@ -19,6 +19,7 @@ export interface Zone {
   open: boolean;
   rateNormal: number;
   rateSpecial: number;
+  free: number; // add this
 }
 
 export interface Ticket {
