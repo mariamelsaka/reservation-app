@@ -12,6 +12,7 @@ import ProtectedRoute from "@components/auth/ProtectedRoute";
 import AuthLayoutSkeleton from "@components/Layout/Skeleton/AuthLayoutSkeleton";
 import LayOutSkeleton from "@components/Layout/Skeleton/LayOutSkeleton";
 // import GatePage from "../pages/gate/gateId";
+import CheckpointPage from '../pages/gate/checkpoint';
 
 // user auth data -------------------
 const storageKey = "loggedInUser";
@@ -49,6 +50,21 @@ const router = createBrowserRouter(
             >
               <Suspense fallback={<LayOutSkeleton />}>
                 <AdminDashboard />
+              </Suspense>
+
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="check-out-panel"
+          element={
+            <ProtectedRoute
+              isAllowed={userData?.token}
+              redirectPath="/login"
+              data={userData}
+            >
+              <Suspense fallback={<LayOutSkeleton />}>
+                <CheckpointPage />
               </Suspense>
 
             </ProtectedRoute>

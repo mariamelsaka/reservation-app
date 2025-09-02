@@ -1,13 +1,12 @@
+import AdminReport from "@components/AdminReports";
+import Sidebar from "@components/Layout/SideBar";
 import Button from "@components/Ui/Button";
-import { IMAGES } from "@config/assets";
 import { useCallback } from "react";
 import { useLocation } from "react-router-dom";
 
 const AdminDashboard = () => {
   const { pathname } = useLocation();
   const storageKey = "loggedInUser";
-//   const userDataString = localStorage.getItem(storageKey);
-//   const userData = userDataString ? JSON.parse(userDataString) : null;
   // logout
   const onLogout = useCallback(() => {
     localStorage.removeItem(storageKey);
@@ -18,31 +17,7 @@ const AdminDashboard = () => {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-md flex flex-col">
-        <div className="h-16 flex items-center justify-center border-b">
-          <img src={IMAGES.Logo} alt="logo" className="w-fit h-[80px]" />
-        </div>
-        <nav className="flex-1 p-4 space-y-2">
-          <button className="w-full text-left px-3 py-2 rounded hover:bg-gray-200">
-            Dashboard
-          </button>
-          <button className="w-full text-left px-3 py-2 rounded hover:bg-gray-200">
-            users
-          </button>
-          <button className="w-full text-left px-3 py-2 rounded hover:bg-gray-200">
-            Zones
-          </button>
-          <button className="w-full text-left px-3 py-2 rounded hover:bg-gray-200">
-            rates
-          </button>
-          <button className="w-full text-left px-3 py-2 rounded hover:bg-gray-200">
-            rush hours
-          </button>
-          <button className="w-full text-left px-3 py-2 rounded hover:bg-gray-200">
-            vacations
-          </button>
-        </nav>
-      </aside>
+      <Sidebar  />
 
       {/* Main content */}
       <div className="flex-1 flex flex-col">
@@ -59,20 +34,16 @@ const AdminDashboard = () => {
         {/* Content area */}
         <main className="flex-1 p-6 overflow-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Example cards */}
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="text-lg font-semibold">Total Employees</h3>
-              <p className="text-3xl mt-2">25</p>
-            </div>
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="text-lg font-semibold">Occupied Zones</h3>
-              <p className="text-3xl mt-2">12</p>
-            </div>
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="text-lg font-semibold">Available Slots</h3>
-              <p className="text-3xl mt-2">58</p>
-            </div>
-            {/* Add more cards or charts here */}
+            <AdminReport title="Total Employees" value={25} />
+            <AdminReport title="Occupied Zones" value={12} />
+            <AdminReport title="Available Slots" value={58} />
+            {/* Future: add dynamic charts or audit logs */}
+            <AdminReport title="Rush Hours">
+              {/* Placeholder for rush hour info or chart */}
+            </AdminReport>
+            <AdminReport title="Vacations">
+              {/* Placeholder for vacation table/list */}
+            </AdminReport>
           </div>
         </main>
       </div>
