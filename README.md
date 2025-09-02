@@ -44,6 +44,7 @@ like http://localhost:5174/gate/gate_1
 Update API URLs in @config/axios.config.ts if needed
 
 Ensure WebSocket server is running at ws://localhost:3000/api/v1/ws
+## demo of the video 
 
 https://github.com/user-attachments/assets/5421ef1c-140b-4bd9-a432-b4f44e865998
 
