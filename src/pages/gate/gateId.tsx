@@ -6,26 +6,9 @@ import GateHeader from "@components/GateHeader";
 import TicketModal from "@components/TicketModal";
 import ZoneCard from "@components/ZoneCard";
 import Sidebar from "@components/Layout/SideBar";
-
+import Animate from "@components/Layout/Animate";
+import { Zone, Ticket } from "../../interfaces";
 type WsStatus = "connecting" | "connected" | "disconnected";
-
-interface Zone {
-  id: string;
-  name: string;
-  categoryId: string;
-  totalSlots: number;
-  occupied: number;
-  open: boolean;
-  rateNormal: number;
-  rateSpecial: number;
-}
-
-interface Ticket {
-  id: string;
-  zoneId: string;
-  gateId: string;
-  checkinAt: string;
-}
 
 const GatePage = () => {
   const { gateId } = useParams<{ gateId: string }>();
@@ -134,20 +117,22 @@ const GatePage = () => {
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       {/* Sidebar */}
-      <Sidebar gateId={gateId} />
+
+      <Sidebar />
 
       {/* Main content */}
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <GateHeader
-          gateId={gateId}
-          wsStatus={wsStatus}
-          onReconnect={() => {
-            wsRef.current?.close();
-            connectWs();
-          }}
-        />
-
+        <Animate>
+          <GateHeader
+            gateId={gateId}
+            wsStatus={wsStatus}
+            onReconnect={() => {
+              wsRef.current?.close();
+              connectWs();
+            }}
+          />
+        </Animate>
         {/* Content */}
         <main className="flex-1 p-6 overflow-auto">
           {/* Tabs */}
@@ -172,29 +157,39 @@ const GatePage = () => {
 
           {/* Subscriber input */}
           {activeTab === "subscriber" && (
-            <div className="mb-4">
-              <input
-                type="text"
-                value={subscriptionId}
-                onChange={(e) => setSubscriptionId(e.target.value)}
-                placeholder="Enter subscription ID"
-                className="border p-2 rounded w-full"
-              />
-            </div>
+            <Animate>
+              <div className="mb-4">
+                <input
+                  type="text"
+                  value={subscriptionId}
+                  onChange={(e) => setSubscriptionId(e.target.value)}
+                  placeholder="Enter subscription ID"
+                  className="border p-2 rounded w-full"
+                />
+              </div>
+            </Animate>
           )}
 
           {/* Zones grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {(activeTab === "visitor" ? zones : subscriptionZones).map(
               (zone) => (
-                <ZoneCard key={zone.id} zone={zone} onCheckin={handleCheckin} />
+                <Animate>
+                  <ZoneCard
+                    key={zone.id}
+                    zone={zone}
+                    onCheckin={handleCheckin}
+                  />
+                </Animate>
               )
             )}
           </div>
 
           {/* Ticket modal */}
           {ticket && (
-            <TicketModal ticket={ticket} onClose={() => setTicket(null)} />
+            <Animate>
+              <TicketModal ticket={ticket} onClose={() => setTicket(null)} />
+            </Animate>
           )}
         </main>
       </div>

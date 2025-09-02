@@ -32,7 +32,7 @@ const ErrorHandler = ({ statusCode = 500, title = "Server Error" }: IProps) => {
         </p>
         <div className="flex items-center justify-center space-x-4 my-10">
           <Link
-            to={"/"}
+            to={"/gate/gate_1"}
             className="inline-block bg-indigo-600 p-2 text-white hover:!text-white rounded-md"
             reloadDocument
           >

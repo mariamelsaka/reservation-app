@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "@components/Ui/Button";
 
 interface Zone {
@@ -17,7 +16,7 @@ interface ZoneCardProps {
   onCheckin: (zoneId: string) => void;
 }
 
-const ZoneCard: React.FC<ZoneCardProps> = ({ zone, onCheckin }) => {
+const ZoneCard = ({ zone, onCheckin }: ZoneCardProps) => {
   return (
     <div className="bg-white p-4 rounded shadow flex flex-col">
       <h3 className="text-lg font-semibold">{zone.name}</h3>

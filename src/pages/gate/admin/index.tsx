@@ -37,13 +37,6 @@ const AdminDashboard = () => {
             <AdminReport title="Total Employees" value={25} />
             <AdminReport title="Occupied Zones" value={12} />
             <AdminReport title="Available Slots" value={58} />
-            {/* Future: add dynamic charts or audit logs */}
-            <AdminReport title="Rush Hours">
-              {/* Placeholder for rush hour info or chart */}
-            </AdminReport>
-            <AdminReport title="Vacations">
-              {/* Placeholder for vacation table/list */}
-            </AdminReport>
           </div>
         </main>
       </div>

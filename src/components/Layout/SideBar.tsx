@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { IMAGES } from "@config/assets";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface SidebarProps {
-  gateId?: string; // only needed for gate users
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ gateId }) => {
+const Sidebar: React.FC<SidebarProps> = () => {
   // Read user from localStorage
   const storageKey = "loggedInUser";
   const userDataString = localStorage.getItem(storageKey);
@@ -30,14 +30,13 @@ const Sidebar: React.FC<SidebarProps> = ({ gateId }) => {
          {/* {(!role || role !== "admin") && gateId && ( */}
           <>
             <Link
-              to={`/gate/${gateId}`}
+              to={`/gate/gate_1`}
               className="block px-3 py-2 rounded hover:bg-gray-200"
             >
               Gate
             </Link>
             <Link
               to={`/check-out-panel`}
-            //   to={`/check-out-panel/${gateId}`}
               className="block px-3 py-2 rounded hover:bg-gray-200"
             >
               Check Out

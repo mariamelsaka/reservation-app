@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-// import { useParams } from "react-router-dom";
 import AxiosInstance from "@config/axios.config";
 import { isAxiosError } from "axios";
 
@@ -27,12 +26,13 @@ interface GateHeaderProps {
  * - Shows WebSocket connection status
  * - Shows a ticking clock (device local time)
  */
-const GateHeader: React.FC<GateHeaderProps> = ({
+
+const GateHeader =  ({
   wsStatus,
   onReconnect,
   rightActions,
-  gateId
-}) => {
+  gateId}: GateHeaderProps) => {
+
   const [gate, setGate] = useState<Gate | null>(null);
   const [loadingGate, setLoadingGate] = useState<boolean>(true);
   const [gateError, setGateError] = useState<string | null>(null);

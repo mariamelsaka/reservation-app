@@ -1,4 +1,3 @@
-// import React, { forwardRef } from "react";
 import Button from "@components/Ui/Button";
 
 interface Ticket {
@@ -17,7 +16,7 @@ interface TicketModalProps {
  * - Displays ticket details
  * - Can print the ticket
  */
-const TicketModal: React.FC<TicketModalProps> = ({ ticket, onClose }) => {
+const TicketModal = ({ ticket, onClose }:TicketModalProps) => {
 
    const handlePrint = () => {
   const printContent = `
@@ -92,7 +91,7 @@ const TicketModal: React.FC<TicketModalProps> = ({ ticket, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-[#F3F4F6] bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded shadow w-96">
         <h3 className="text-xl font-semibold mb-2">Ticket Confirmed</h3>
         <p>Ticket ID: {ticket.id}</p>

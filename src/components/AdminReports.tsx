@@ -6,7 +6,7 @@ interface AdminReportProps {
   children?: React.ReactNode;
 }
 
-const AdminReport: React.FC<AdminReportProps> = ({ title, value, children }) => {
+const AdminReport= ({ title, value, children }:AdminReportProps) => {
   return (
     <div className="bg-white p-4 rounded shadow flex flex-col">
       <h3 className="text-lg font-semibold">{title}</h3>

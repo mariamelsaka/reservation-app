@@ -1,6 +1,6 @@
 import Login from "@pages/Login";
-import PageNotFound from "@pages/PageNotFound";
 import { lazy, Suspense } from "react";
+import ErrorHandler from "@components/errors/ErrorHandler";
 import {
   Outlet,
   Route,
@@ -12,13 +12,14 @@ import ProtectedRoute from "@components/auth/ProtectedRoute";
 import AuthLayoutSkeleton from "@components/Layout/Skeleton/AuthLayoutSkeleton";
 import LayOutSkeleton from "@components/Layout/Skeleton/LayOutSkeleton";
 // import GatePage from "../pages/gate/gateId";
-import CheckpointPage from '../pages/gate/checkpoint';
+import CheckpointPage from "../pages/gate/checkpoint";
+import Animate from "@components/Layout/Animate";
 
 // user auth data -------------------
 const storageKey = "loggedInUser";
 const userDataString = localStorage.getItem(storageKey);
 const userData = userDataString ? JSON.parse(userDataString) : null;
-console.log(userData);
+
 // user auth data -------------------
 // lazy load components -------------------------------------
 
@@ -28,15 +29,15 @@ const GatePage = lazy(() => import("../pages/gate/gateId"));
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-    {/* Root Layout */}
+      {/* Root Layout */}
       <Route path="/" element={<Outlet />}>
-
-   
         <Route
           path="gate/:gateId"
           element={
             <Suspense fallback={<LayOutSkeleton />}>
-              <GatePage   />
+              <Animate>
+                <GatePage />
+              </Animate>
             </Suspense>
           }
         />
@@ -49,9 +50,10 @@ const router = createBrowserRouter(
               data={userData}
             >
               <Suspense fallback={<LayOutSkeleton />}>
-                <AdminDashboard />
+                <Animate>
+                  <AdminDashboard />
+                </Animate>
               </Suspense>
-
             </ProtectedRoute>
           }
         />
@@ -64,9 +66,10 @@ const router = createBrowserRouter(
               data={userData}
             >
               <Suspense fallback={<LayOutSkeleton />}>
-                <CheckpointPage />
+                <Animate>
+                  <CheckpointPage />
+                </Animate>
               </Suspense>
-
             </ProtectedRoute>
           }
         />
@@ -80,20 +83,24 @@ const router = createBrowserRouter(
               data={userData}
             >
               <Suspense fallback={<AuthLayoutSkeleton />}>
-                <Login />
+                <Animate>
+                  <Login />
+                </Animate>
               </Suspense>
-
             </ProtectedRoute>
           }
         />
       </Route>
-      {/* Page Not Found */}
-      <Route path="*" element={
-        <Suspense fallback={<AuthLayoutSkeleton />}>
-          <PageNotFound />
-        </Suspense>
-       } />
-      </>
+      {/* Catch all unmatched routes */}
+      <Route
+        path="*"
+        element={
+          <Suspense fallback={<AuthLayoutSkeleton />}>
+            <ErrorHandler statusCode={404} title="Page Not Found" />
+          </Suspense>
+        }
+      />
+    </>
   )
 );
 

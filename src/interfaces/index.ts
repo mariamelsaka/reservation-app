@@ -10,7 +10,23 @@ export interface CredentialsLogin{
     password:string,
 }
 
+export interface Zone {
+  id: string;
+  name: string;
+  categoryId: string;
+  totalSlots: number;
+  occupied: number;
+  open: boolean;
+  rateNormal: number;
+  rateSpecial: number;
+}
 
+export interface Ticket {
+  id: string;
+  zoneId: string;
+  gateId: string;
+  checkinAt: string;
+}
 export interface IErrorResponse {
   error: {
     details?: {

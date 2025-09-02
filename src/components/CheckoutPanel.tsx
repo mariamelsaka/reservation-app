@@ -22,7 +22,8 @@ interface CheckoutPanelProps {
   onClose: () => void;
 }
 
-const CheckoutPanel: React.FC<CheckoutPanelProps> = ({ onClose }) => {
+
+const CheckoutPanel = ({ onClose }: CheckoutPanelProps) => {
   const [ticketId, setTicketId] = useState("");
   const [checkoutData, setCheckoutData] = useState<CheckoutData | null>(null);
   const [loading, setLoading] = useState(false);
