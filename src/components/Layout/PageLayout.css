@@ -1,0 +1,84 @@
+/* start card */
+.PageLayout{
+    position: relative;
+    /* height: 100%; */
+}
+#PageLayoutCard{
+    width: 65%;
+    margin: 0px 0px 0px 17%;
+    padding: 50px 150px 50px 70px;
+    position: relative;
+    /* bottom:105px; */
+    z-index: 2;
+}
+#title-PageLayout{
+    color: #20B486;
+    padding-left: 45%;
+    padding-bottom: 5%;
+}
+#img1-PageLayout{
+    position: relative;
+    left: 76%;
+    z-index: 1;
+    top:5em;
+}
+#img2-PageLayout{
+    position: relative;
+    left: 13%;
+    bottom:4.5em;
+    z-index: 1;
+}
+#img3-PageLayout{
+   position: relative;
+   right: 1em;
+   top:12.5em;
+
+}
+#img4-PageLayout{
+    position: relative;
+    left: 68em;
+}
+
+
+.img3-AboutUs33{
+  top: 12.5em !important;
+}
+
+ /* Mobile - up to 767px */
+@media (max-width: 767px) {
+    /* Styles for mobile devices */
+    #PageLayoutCard {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 20%;
+        margin-bottom: 10%;
+        padding: 30px 20px;
+      }
+    
+      #title-PageLayout {
+        padding-left: 0;
+        text-align: center;
+      }
+    
+      #img1-PageLayout,
+      #img2-PageLayout,
+      #img3-PageLayout,
+      #img4-PageLayout {
+        display: none; /* إخفاء الصور الزخرفية لتوفير المساحة */
+      }
+  }
+  
+  /* Tablet - 768px to 1024px */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    /* Styles for tablets */
+  }
+  
+  /* Laptop - 1025px to 1280px */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    /* Styles for laptops */
+  }
+  
+  /* Desktop - 1281px and up */
+  @media (min-width: 1281px) {
+    /* Styles for desktops */
+  }
